@@ -1,0 +1,46 @@
+------- categoryil add button click avumbo json poy store avanm--------
+-----------------------------------------------------------------------------
+ -fst allAPI.js=   
+        export const saveCategoryAPI = async(categoryDetails)=>{
+         return await commonAPI("POST",`${SERVERURL}/categories`,categoryDetails)
+          }  
+ - then category.jsx category store cheyyan state create cheyyanam
+          const[categoryName,setcategoryName] = useState("")
+ - textboxil onchngeil setcategoryName bind cheyyanam (modalilanu textbox ulath)
+          <Form.Control onChange={e=>setcategoryName(e.target.value)} type="text" placeholder="category Name" />
+ - oru function add buttonil call akki onclickil
+           <Button variant="primary" onClick={handleSaveCategory} >Add</Button>
+ - ini ath function define cheynnam 
+           const handleSaveCategory =async ()=>{
+     if(categoryName){
+       json file save akkan api call chythvachind already
+       string save akkan patla athond object avu
+
+       const categoryDetails={categoryName(keyum valueum same ayond key mathram mathy),allVideos:multiple video illond arrray avum so [] empty array kodth}
+       try{
+
+       }catch{
+        
+       }
+     }else{
+      alert("please fill form")
+       }
+      }
+
+       videocard.jsx il ninn card drag and drop to category.jsx
+       draggable event nadakndath videocardil ayod ath avide set akki drop chyndth categoryil ayond droppable ivdeyum(category.jsxilum vech)
+       e.prevent = refresh adich poknnath thadayan pakshe ath mathram verthe kodkmbolum wrk avilla athin munne etho oru event drop cheynnen munne nadaknnind onDragover={dragovercategory} function call chyth ath mukalil define chynm
+       prevent appo function define chynidath kodknm
+
+       const videoCaDropOverCategory =(e,categoryDetails)=>{
+  // refreshing can stop
+  // additional event done by browser can stop using below code
+  e.prevent // ivde prevent kodthit karyam illa
+  console.log("inside videoCaDropOverCategory");
+  console.log(categoryDetails);
+  
+
+  dragovercategory fn il venm e.prevent kodkkan
+
+  existig array update = put api call
+  

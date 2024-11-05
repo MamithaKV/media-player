@@ -1,0 +1,347 @@
+------to set path-----
+1.install react-router-dom : npm i react-router-dom in terminal
+2.in main.jsx
+       first import = import { BrowserRouter } from 'react-router-dom'
+                     just type import and BrowserRouter
+       then puth tha <app/> inside BrowserRouter = <StrictMode>
+                                                   <BrowserRouter> 
+                                                   <App/>
+                                                   </BrowserRouter>
+                                                   </StrictMode>,
+3.in App.jsx 
+        first import path set cheyyanulla component = import Landing from './pages/Landing'
+                                                       import Home from './pages/Home'
+                                                       import History from './pages/History'
+                                just type import and Landing ,Home,History
+        then in jsx section <Routes></Routes> inside <Route/> set cheyya =
+             <Routes>
+             <Route path='/' element={<Landing/>}/>
+             <Route path='/Home' element={<Home/>}/>
+             <Route path='/History' element={<History/>}/>
+             </Routes>
+-Route inte property aanu element aa elementilottekkanu vere component add akkiyath
+-elementinu routenn parnja componentin acess cheyya athinu vendiyanu props(property) use akknnath
+-that props argument give anoter component = higher order component
+
+--navbar and footer page still remain for three component its not chnging when different pages taken
+so 
+      -ella pagilum common ayit kannunna sadhanathe rootcomponennt aya app.jsxil
+         the navbar and footer page set in App.jsx
+          {/* header */}
+           <Routes>
+            <Route path='/' element={<Landing/>}/>
+               <Route path='/Home' element={<Home/>}/>
+              <Route path='/History' element={<History/>}/>
+             </Routes>
+           {/* footer */} ingneyum setakka allenkil vere compent create(page) ayitum akka
+           pagesnoke vendit oru folder create akki component ennit athil anu pages kodknne
+                header footer okke separate components aytaanu create aknnath athin vndi oru folder indaki compnent 
+                -compnenil header.jsx footer.jsx create akki ath app.jsxil iport akiyt thazhe<tagname/>akknm                
+
+1.link the content instead of href
+      - import link avisyamaya  componentilek(header.jsx)
+               =  import { Link } from 'react-router-dom'
+      -link act chynda sthalam link taginte ullil kodthamathy
+              =     <Link to={'/'}>
+          <Navbar.Brand  >
+          <img
+            alt=""
+            src="/img/logo.svg"
+            width="30"
+            height="30"
+            className="d-inline-block align-top"
+          />{' '}
+           React Bootstrap
+          </Navbar.Brand>
+           </Link>
+      -link click chyumbo ath povanda sthalam link tagil to itt path kodthamathy / kodthath nthann vecha ath click akumbo
+      aa pagilott thanneya povnde allenk /itt Home kodtha homeilot povum
+
+------footer----
+<div className='d-flex flex-column'>
+          <h5>Guides</h5>
+          <a style={{textDecoration:'none',color:'white'}} href="https://react.dev/">React</a>
+        </div>
+        a use akiyth porthottek ulla oru linkilekk anu athond anu link tag use akkathe
+
+
+------ViewAdd.jsx-----
+   <Col className='mb-2' sm={12}md={6}lg={4}>
+          {/* videocard component */}
+          <VideoCard/>
+        </Col>
+        ithil 10 videos indenkil e code 10 pravsym duplicate avanm 10 videos array aytanu store cheyyanulla
+        apo arryne jsx display kanikkan map method use akkiyamathy
+
+      -------videocard.jsx----
+      picture thodmbo modal ayt oruu youtube video ath autoplay avan vendi src nte avasanam " mumb ?autoplay=1 kodthamathy
+
+
+      ---------AddVideo.jsx------
+
+      embedlink extract from youtubelink aknnath fst function kdknm
+
+      const extractingEmbedLinkFroYoutubeLink=(userInputYoutubeLink)=>{
+      // steps creating embed link from youtube link
+
+     }
+     valid ano nookaan vendi https://www.youtube.com/watch?v= ithvare ellavideode linkum same ayrkum ithano userinput cheynnen check chythamathy
+      if(userInputYoutubeLink.includes("https://www.youtube.com/watch?v=")){
+                    [eg:https://www.youtube.com/watch?v=W6NZfCO5SIk&t=2s  ee linkne split chynm v= sesham 11 characters and athinte appuram illa https randum split akkanm
+                     leftile and rightilwe content split akiyt  rightile content anu namkkk vendath v= rightulla sadhnm wewant]
+       console.log(userInputYoutubeLink.split("v=")[1].slice(0,11));
+       }else{
+        alert("invalid youtube link...please try with other...")
+       } then pinne jsx codeile form controlil youtubelinknte avde onchngeil kodknm
+
+       split chytha sadhangal aray aytanu consolil kanunnath appo onnamathe indexilayrkum nammk venda 11 characters indavua
+       athin vndi ifil splitnde avde[1]kodtha 1index mathre consolil kanikulu
+       athinte 11 characters mathram nammk mathy athin vendi slice opertor use chynn (stringinn orupart kitan)ifil .slice(0,11)
+
+       ivade kodtha alert textboxinte tazhe kanan vndi oru state indaaka
+       textboxinte thazhe oru div indkiyt divnte insidil alertil kodtha content copy paste akkiyt div nit textbox valid ano allayo nokiyt athinte baseil disply chym console chyn state use akiyamadhy
+       functionil : const[InvalidYoutubeLink,setInvalidYoutubeLink] =useState(false)
+       false ayath nammak function false avumbolanu display chyth kanikndth athond
+
+
+       invalid avumbo mathram show akkan youtubelinktextboxin sesham code kodknm
+       InvalidYoutubeLink &&
+        <div className="text-danger fw-bolder mt-2">Invalid youtube link...please try with another one</div>
+        </div>
+
+------AddVideo.jsx------
+add button click cheyumbo athil value indenkil aa value add avum pagelek allenkil alert kanikknm 
+
+const handleUploadVideo = ()=>{
+      //object destructure : const {key1,key2....}=object-name
+      const{caption,imgUrl,youTubeLink}=videoDetails
+      if(caption && imgUrl && youTubeLink){
+        //store video details permanently
+      }else{
+        alert("plaese fill the form!!!")
+      }
+     }
+     add button onlickil handleUploadVideo kodknm
+
+API PROJECT USING REACT :means internetil available aya veroru portil work cheynna application ayt engane work cheyyam
+
+---------------------------------------------------
+            JSON SERVER CREATION
+---------------------------------------------------
+
+1. create a server folder to store json file
+        namadee project nte folder nte frontendil kondpoy create cheyyarth porth create cheyya [eg:mediaplayer enna foldernte porth]
+        js file run cheyyan node vechanu athepole json run cheyyan oru package venam[json-server]
+        package install akkunnen munne steps ind
+2. create a package.json(npm config file)file inside server : use command npm init -y 
+         athin vendi folder open akkiyt cmd kodthit command kodka npm init -y 
+         code . vscode edkkanm
+         json file install chyth run akkan vendi use cheynna package anu json-server
+         install cheynulla command cmd terminal kond poy kodkka
+3.create json (db.json enth venelum kodkka) file for storing project data
+        [ee projectil upload cheynna videode dtail store chyanullla option ee websitin user multiple video upload chyum so array aytanu store avandath ayyade ullil store avunnath object aytaanu ]
+        [ee projectil category store cheyyanam athepolw watch cheynna video yum page refresh adicha povan padilla]
+        resource part indavum athayth post nn parnjit oru linkum howmuch post athepole comment in link and how much comment ithepole avisym ullath create akkanm athanu db.jsonil create akkunnath
+4.db.json=structure== {inside curly brace nte ullil avanam,keyvaluepair, key must be string}
+5.store avanda sadhanam {ullil empty array akki vekknm}
+6.json file run chyn cmdil npx json-server db.json
+7.eg:history store chynmenkil localhost:3000/history
+8.ini a link kitnenkil(run chynulla command) [npx json-server db.json] run chynm cmdil
+9.localhost:3000 localhost:5173 communicatio nadathan api use chythamathy
+
+--------api call nadathan axios library use akknn------
+==============================================
+ath install cheyyan npm install axios in react project cmd (req kodknath reactnnayathkond)
+axios website  il api engne call cheyyanoke parnjitindavum
+axios url keyilanu engotano pass chynde data aa url , axios data eath data aanu kodkkndath (body),
+add buttton clickavumbo data jsonil store avanamenkil post kodknm aa data nammade applicationil kananamenkil json filenn get chynm aa data applicationilninn delete akkanenkil json delete kodknm js doesnot act backend
+       -to make http req using axios : axios(config)
+             config:is an predefined object with keys(method,url,data,headers)
+        -to make response using axios will always return object with predefined keys(data(server response),status(response status))
+        response kitan axios il response schemail predefinde structure ind ,server tharunna data responsil data il ayrkum kitukka
+        api call nadathan service folder create cheyunind
+            - create service folder inside src of react app
+            -create file(commonAPI.js) in service folder(req kodkkan js folder ,api jsil anu build cheyya)
+            -axios import akkit export aknm commonAPI.jsil
+
+    servicefolderil serverURL.js nna file create akki nthinann vecha
+         -api call cheyyanda url localhost:3000 thilotanu athinte value ethelum hoting serever vech matum athond aa urlne oru variablelekk store akkiya variable mathram matyamathy
+          -variable create akkan aanu serverURL create aakiyath
+          variablelekk urlnte link paste akknm last varunna slash remove akknm
+          then export cheyynm variable angne anenkl vere eth file venenkilum access chym , import akki use chyn patum
+          -service folderil full api call nadathan oru file indakki allAPI.js create akki
+          -commonAPIimport akiyt variable store aakiya file backtickil importakanm ennit eth req aanu kodkkndath enn "" kodknm upload chynna video kanan uploadVideos patum jsonserveril
+          setrverurlil http://localhost:3000 ind athinte bakki ayt /uploadVideos kodtha  videode bhagham kitum
+
+=====pk.qs======
+ try{
+           const result=await saveVideoAPI(videoDetails)
+           console.log(result);
+           
+        }catch(err){
+          console.log(err);
+          
+        }
+        handleuploadvideo de avde async koode kodknm eni successful alert video upload aykainja kanikkan vndi(modal close ay alert kanikan)
+        console.log(result)thazhe 
+         if(result.status>=200 && result.status<300){
+            alert("video uploaded successful!!!")
+            handleClose()  //modal close akkanda functionannu
+           }
+
+jsonil kitya dataye nammade applicationil get chyn adhyam
+allAPI.jsil = export const getAllVideosAPI=async()=>{
+    //get video details=argument
+    //api call-axios-in commonAPI so import
+   return await commonAPI("GET",`${SERVERURL}/uploadVideos`,"")
+}
+then ViewAdd.jsx il oru function create ithinayt create akkiyt useeffect(hook) mukalil call cheynm
+useeffectil aa functioncall chynm getAllVideos
+data yilayrkum nammak vnda aray indava (consolile) jsxil varan vndi result.data kodkumbo consolil varum ath jsx il kondvaram ayale statil store chynm
+athond ViewAdd.jsx il state create chynm(usestate)
+
+ViewAdd.jsx
+get chytha sadahanm browserl kanikkaan return il aanu kodkndath (jsx browser display chynnath)
+
+-------*10*------
+  {
+      allVideos?.length>0?
+      // all videos one by one map
+      allVideos?.map(video(this video )=>(
+        <Col key={video?.id} className='mb-2' sm={12} md={6} lg={4}>
+        <VideoCard(ithilanu kanikkndath molile vdieo) displayData={video}/>
+        </Col>
+      ))
+    :
+    <div className="fw-bolder text-danger fs-5">No videos are uploaded yet</div>
+      }
+    </Row>
+    then VideoCard.jsxil functionil propsin pakaram destructure kodkknm athin vendi curly brace kodkknm appo aa attribute edth ulil vekknm
+    const VideoCard = ({displayData}) => 
+    eni ath thazhathe cardilum kodknm <Card style={{ height:'250px'}}>
+      <Card.Img onClick={handleShow} variant="top" height={'150px'} src={displayData?.imgUrl} />athepole captionilum <p>caption</p> caption mateet displaydata?.caption kodknmkodknm
+      displayDatail value indenkil key imgUrlil ninn disply avum
+      youtubelink modalil iframetag lanu kodknde
+
+
+--data sharing between components in react 
+      -state lifting : data sharing is using props. we will create a state in common parent of data to be shared components.
+       share state updation function one component and state to another component
+           --home.jsx : hook use chyth state create aknm[const [addResponseFromHome,setAddResponse]=useState("")]
+           --state update cheyn ulla function [setAddResponse] addin kodknm <AddVideo setAddResponse={setAddResponseFromHome}/>
+           --ini AddVideo il const AddVideo = ([   {setAddResponseFromHome}   ]) => 
+           --then thazhe ifil if(reslt.status>=200 && reslt.status<300){
+                 alert("video uploaded!!")
+                    handleClose()
+                  //pass result to view component
+                 [setAddResponseFromHome(reslt)]
+                }else
+            --ini home.jsx thazhe ViewAddil <h3>All Videos</h3>
+                 <ViewAdd[ addResponseFromHome ={addResponseFromHome} ]/>
+            --ini ViewAdd.jsxil 
+               const ViewAdd = (addResponseFromHome) =>
+            -- ini thazhe  getAllVideos()
+               ( {} ,[addResponseFromHome])
+                 console.log(allVideos);
+
+  --------*11*-----------
+  video click chyeumbo historylekk add avan adhyam ath localhostilekk store avanm
+  athin vendi
+     -allAPI.js il function create cheyyanam(api create chynm)
+                  export const saveHistoryAPI=async(historyDetails)=>{
+    
+                  return await commonAPI("POST",`${SERVERURL}/history`,historyDetails)
+                     }
+      -VideoCard.jsx (modalopen avumbolanu video play avunnath athond modal open cheyan upayogucha fn anu handleshow)
+         handleshowikk korch step kodkknm api call cheyumbo handleshow become async(asynchronous fn)
+              setShow(true);
+            //store history in json
+            const{caption,youTubeLink}= displayData
+           - displayDatail ninn captionum youtubelinkum edkkam time in js kittan vndi date kitan object indaknm
+                const sysDateTime=new Date()
+                 console.log(sysDateTime);
+          1** time shortformataki convert akkan
+                 console.log(sysDateTime.toLocaleString('en-US',{timeZoneName:'short'}));
+     timestampilekk aa datane vechit 
+         const timeStamp = sysDateTime.toLocaleString('en-US',{timeZoneName:'short'})
+      historydetailekk vendakaryangal kodth
+            const historyDetails={caption,youTubeLink,timeStamp}
+      ini historydetails kainj trycatch il vekknm apo data poy store avum
+
+ini ath GET cheyyan---------
+    -allAPI.js
+      export const getAllHistoryAPI=async()=>{
+    
+     return await commonAPI("POST",`${SERVERURL}/history`,"")
+     }
+    -History.jsx
+         const [allVideoHistory,setAllVideoHistory] = useState([])   state indaki
+           const getAllHistory= async ()=>{
+             try{
+          const reslt = await getAllHistoryAPI()
+
+            }catch(err){
+             console.log(err);
+      
+             }}
+           ===== thazhe =======
+            <tbody>
+          {
+            allVideoHistory?.length>0?
+            allVideoHistory?.map((videoDetails,index)=>(
+              <tr key={videoDetails?.id}>
+              <td>{index+1}</td>
+          <td>Caption</td>
+          <td><a target='_blank' href="https://youtu.be/1PnVor36_40">https://youtu.be/1PnVor36_40</a></td>
+          <td>9/11/2024 11:53:43 AM GMT+5:30</td>
+          <td><button className='btn'><i className='fa-solid fa-trash text-danger'></i></button></td>
+          <td></td>
+          </tr>
+            ))
+            :
+            <div>you didnot watch any video yet!!1</div>
+          }
+        </tbody>
+
+--------watch history ddelete button click avumbo delete avanam-------
+ - allAPI.js api call nadathanam delete cheyyanulla code
+ -history.jsx  =  const getAllHistory= async ()=>{
+    try{
+     const reslt = await getAllHistoryAPI()
+     if(reslt.status>=200 && reslt.status<300){
+     setAllVideoHistory(reslt.data)
+     }else{
+      console.log(reslt);
+      
+     }
+    }catch(err){
+      console.log(err);
+      
+    }
+  }
+
+  const removeHistory = async ()=>{
+    try{
+    //  api call
+    await deleteHistoryAPI(id) 4 ennam indenkil onn remov aypoyindavum
+    getAllHistory() delete ayene ozhich baakiyullathine kanikkan(get cheyyan)
+
+    }catch(err){
+      console.log(err);
+      
+    }
+  }
+  thazhott vannit buttonte avide
+  <td><button onClick={()=>removeHistory(videoDetails?.)} className='btn'><i className='fa-solid fa-trash text-danger'></i></button></td>
+
+-----videocardnn card delete avan button click chyumbo------
+=allAPI.js removeVideoAPI create
+  export const removeHistoryAPI=async(id)=>{
+    
+  return await commonAPI("DELETE",`${SERVERURL}/uploadVideos/${id}`,{})
+}
+=common parentaya  viewaddil statelifting chynm 
+ const[deleteVideoResponseFromVideoCard,setdeleteVideoResponseFromVideoCard]=useState("")
+ ini useeffectil kondpoy   deleteVideoResponseFromVideoCard veknm
+=state update cheyyan thazhe <videocard   setdeleteVideoResponseFromVideoCard={setdeleteVideoResponseFromVideoCard}/>
+=videocard.jsx - const videocard already props aya  displayData indavum coma ittit setdeleteVideoResponseFromVideoCard kodka
