@@ -6,6 +6,8 @@ import ViewAdd from '../Compnent/ViewAdd'
 import Category from '../Compnent/Category'
 
 const Home = () => {
+  const [deleteResponseFromView,setdeleteResponseFromView]=useState("")
+
 const [addResponseFromHome,setAddResponseFromHome]=useState("")
 
 const[deleteResponseFromCategory,setDeleteResponseFromCategory] = useState("")
@@ -19,10 +21,10 @@ const[deleteResponseFromCategory,setDeleteResponseFromCategory] = useState("")
       <div className="container-fluid row my-5">
         <div className="col-lg-6">
           <h3>All Videos</h3>
-          <ViewAdd deleteResponseFromCategory={deleteResponseFromCategory} addResponseFromHome={addResponseFromHome} />
+          <ViewAdd setdeleteResponseFromView={setdeleteResponseFromView} deleteResponseFromCategory={deleteResponseFromCategory} addResponseFromHome={addResponseFromHome} />
         </div>
         <div className="col-lg-6">
-          <Category setDeleteResponseFromCategory={setDeleteResponseFromCategory}/>
+          <Category deleteResponseFromView={deleteResponseFromView} setDeleteResponseFromCategory={setDeleteResponseFromCategory}/>
         </div>
       </div>
     </div>
